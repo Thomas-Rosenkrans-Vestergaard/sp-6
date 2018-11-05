@@ -6,6 +6,7 @@ class CountryTable extends Component {
   constructor(props) {
     super(props);
 
+    this.keys = ["name", "capital", "region", "population", "area", "timezones", "borders", "topLevelDomain", "currencies", "languages"];
     this.state = { labels: [], countries: [] };
   }
 
@@ -23,15 +24,16 @@ class CountryTable extends Component {
       <table className="table">
         <thead>
           <tr>
-            {labels.map((label, index) => <th key={index}>{label}</th>)}
+            {labels.map((label, index) =>
+              <th key={index}>{label}</th>)}
           </tr>
         </thead>
         <tbody>
           {countries.map((country, index) =>
             <tr key={index}>
-              {labels.map((label, index) =>
+              {this.keys.map((label, index) =>
                 <td key={index}>
-                  {this.toString(country[label.toLowerCase()])}
+                  {this.toString(country[label])}
                 </td>
               )}
             </tr>
